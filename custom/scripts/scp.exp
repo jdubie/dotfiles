@@ -1,0 +1,23 @@
+#!/usr/bin/expect
+
+# Handle input variables
+set arg1 [lindex $argv 0]
+set arg2 [lindex $argv 1]
+set pwd       $env(PWD_STANFORD)
+
+# ssh
+eval spawn scp -r $arg1 $arg2
+
+# use correct prompt
+set prompt ":|#|\\\$"
+interact -o -nobuffer -re $prompt return
+send "$pwd\r"
+
+# run other optional commands...
+#interact -o -nobuffer -re $prompt return
+#send "my_command1\r"
+#interact -o -nobuffer -re $prompt return
+#send "my_command2\r"
+
+# returns prompt from remote server
+interact
