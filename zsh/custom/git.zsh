@@ -1,0 +1,13 @@
+# Git Aliases
+alias gs='git status '
+alias ga='git add '
+alias gaa='git add -A'
+alias gcam='git commit -a -m '
+alias gb='git branch '
+alias gc='git commit'
+alias gd='git diff'
+alias go='git checkout '
+alias gpull='git pull'
+alias gpush='git push'
+alias gmerge='git mergetool'
+alias gh='git hist'
