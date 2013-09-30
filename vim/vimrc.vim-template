@@ -1,0 +1,102 @@
+call pathogen#infect()
+syntax enable
+filetype plugin indent on
+
+" Tab settings
+set shiftwidth=2
+set softtabstop=2
+set tabstop=2
+set number
+set smartindent
+set expandtab
+
+set nocompatible
+
+set nobackup      " prevents file.txt.swp
+set nowritebackup " prevents file.txt~ on write
+
+set history=50
+set ruler
+set showcmd
+set incsearch
+set hlsearch
+filetype plugin indent on
+
+set noswapfile  " removes annoying swap
+set autoread    " automatically reloads (i.e. on git pull)
+
+set number      " line numbers
+
+" switch bewtween .c and .h
+map t :e %:p:s,.h$,.X123X,:s,.c$,.h,:s,.X123X$,.c,<CR>
+map <F3> :vs %:p:s,.h$,.X123X,:s,.c$,.h,:s,.X123X$,.c,<CR>
+
+" easier than hitting <Esc>
+imap fj <Esc><Right>
+vmap fj <Esc><Right>
+
+" nice paren functionality
+"imap ( ()<Left> " actually, this is annoying
+"imap [ []<Left> " actually, this is annoying
+
+"spell check
+
+" disable folding
+set foldlevelstart=99
+
+" don't have to shift ;
+nmap ; :
+
+" don't automatically add comments - annoying for pasting into vim
+autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+
+" add highlighted current line
+" simple underline
+set cursorline
+" solid red highlight
+"hi CursorLine   cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
+"hi CursorColumn cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
+"nnoremap <Leader>c :set cursorline! cursorcolumn!<CR>
+
+
+" use comma as <leader> key
+let mapleader=","                                                                                                   
+nmap , <Space>
+set winminwidth=0
+
+" Splits manipulation mappings
+nnoremap <leader>ma <C-w>400><C-w>400+^
+nnoremap <leader>mi <C-w>400<<C-w>400-
+nnoremap <leader>j <C-w>j<C-w>400+^
+nnoremap <leader>k <C-w>k<C-w>400+^
+
+" Splits resize
+nnoremap <leader>H <C-w>h<C-w>40>^
+nnoremap <leader>L <C-w>l<C-w>40>^
+
+" Vertical split normalize
+nnoremap <leader>m :resize -10<CR>
+
+
+" window navigation
+nmap <silent> <leader>h :wincmd h<CR>
+nmap <silent> <leader>l :wincmd l<CR>
+
+" update current working directory
+autocmd BufEnter * silent! lcd %:p:h
+
+" Word frequency
+function! WordFrequency() range
+  let all = split(join(getline(a:firstline, a:lastline)), '\A\+')
+  let frequencies = {}
+  for word in all
+    let frequencies[word] = get(frequencies, word, 0) + 1
+  endfor
+  new
+  setlocal buftype=nofile bufhidden=hide noswapfile tabstop=20
+  for [key,value] in items(frequencies)
+    call append('$', key."\t".value)
+  endfor
+  sort i
+endfunction
+command! -range=% WordFrequency <line1>,<line2>call WordFrequency()
