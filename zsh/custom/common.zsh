@@ -147,3 +147,6 @@ alias pull='git pull'
 function smpl {
   python -m SimpleHTTPServer $1
 }
+
+# ssh into vm
+alias vm='cd ~/Developer/mailbox/colosseum && vagrant ssh'
