@@ -1,6 +1,6 @@
 DOT_HOME=~/.dotfiles
 
-install: install-zsh install-vim
+install: install-zsh install-vim install-tmux install-git
 
 install-zsh:
 	ln -fs $(DOT_HOME)/zsh/templates/zshrc.zsh-template ~/.zshrc
@@ -11,6 +11,9 @@ install-vim:
 
 install-tmux:
 	ln -fs $(DOT_HOME)/tmux ~/.tmux.conf
+
+install-git:
+	ln -fs $(DOT_HOME)/git/gitconfig ~/.gitconfig
 
 update: update-vim update-zsh
 

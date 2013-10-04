@@ -27,6 +27,11 @@
   changed = yellow
   untracked = blue bold
 
+[push]
+    default = current
+[pull]
+    default = current
+
 #[alias]
 #  st = status
 #  ci = commit

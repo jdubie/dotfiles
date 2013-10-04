@@ -150,3 +150,8 @@ function smpl {
 
 # ssh into vm
 alias vm='cd ~/Developer/mailbox/colosseum && vagrant ssh'
+
+# print last exit code
+function ec {
+  echo "exit code: $?"
+}
