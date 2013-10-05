@@ -10,7 +10,7 @@ install-vim:
 	ln -fs $(DOT_HOME)/vim/vimrc.vim-template ~/.vimrc
 
 install-tmux:
-	ln -fs $(DOT_HOME)/tmux ~/.tmux.conf
+	ln -fs $(DOT_HOME)/tmux/tmux.conf ~/.tmux.conf
 
 install-git:
 	ln -fs $(DOT_HOME)/git/gitconfig ~/.gitconfig
