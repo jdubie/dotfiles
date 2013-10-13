@@ -157,4 +157,10 @@ alias rv='cd Parchment/Resources/Library/raven'
 # open all files in vim
 alias vv='vim -o *'
 
+# vim shortcut
 alias v='vim'
+
+# print last exit code
+function ec {
+  echo "exit code: $?"
+}
