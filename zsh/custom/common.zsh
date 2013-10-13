@@ -71,7 +71,7 @@ alias sa='tmux attach -t'
 alias sf='tmux new-session -s ${PWD##*/}'
 
 # make test
-alias mt='cake test'
+alias mt='make test'
 
 # git flow
 alias gffs='git flow feature start'
@@ -150,3 +150,11 @@ function smpl {
 
 # ssh into vm
 alias vm='cd ~/Developer/mailbox/colosseum && vagrant ssh'
+
+# cd into raven from parchment
+alias rv='cd Parchment/Resources/Library/raven'
+
+# open all files in vim
+alias vv='vim -o *'
+
+alias v='vim'
