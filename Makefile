@@ -22,3 +22,4 @@ update-zsh:
 
 update-vim:
 	git subtree pull --prefix vim/bundle/coffee-script https://github.com/jashkenas/coffee-script.git master --squash
+	git subtree pull --prefix vim/bundle/fugitive https://github.com/tpope/vim-fugitive.git master --squash
