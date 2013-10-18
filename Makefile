@@ -18,7 +18,7 @@ install-git:
 update: update-vim update-zsh
 
 update-zsh:
-	git subtree pull --prefix zsh zsh master --squash
+	git subtree pull --prefix zsh https://github.com/robbyrussell/oh-my-zsh.git master --squash
 
 update-vim:
-	git subtree pull --prefix vim/bundle/coffee-script coffee-script master --squash
+	git subtree pull --prefix vim/bundle/coffee-script https://github.com/jashkenas/coffee-script.git master --squash
