@@ -28,9 +28,9 @@
   untracked = blue bold
 
 [push]
-    default = current
+  default = current
 [pull]
-    default = current
+  default = current
 
 #[alias]
 #  st = status
