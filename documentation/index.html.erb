@@ -437,8 +437,8 @@ Expressions
     </p>
     <%= code_for('functions', 'cube(5)') %>
     <p>
-      Functions may also have default values for arguments. Override the default
-      value by passing a non-null argument.
+      Functions may also have default values for arguments, which will be used
+      if the incoming argument is missing (<tt>null</tt> or <tt>undefined</tt>).
     </p>
     <%= code_for('default_args', 'fill("cup")') %>
 
@@ -805,7 +805,7 @@ Expressions
       Destructuring assignment is also useful when combined with class constructors
       to assign properties to your instance from an options object passed to the constructor.
     </p>
-    <%= code_for('constructor_destructuring', 'contents.join("")') %>
+    <%= code_for('constructor_destructuring', 'tim.age') %>
 
     <p>
       <span id="fat-arrow" class="bookmark"></span>
