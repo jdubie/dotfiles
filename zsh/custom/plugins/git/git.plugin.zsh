@@ -7,3 +7,5 @@ alias gd='git diff'
 compdef _git gd=git-diff
 alias gc='git commit'
 compdef _git gc=git-commit
+alias gl="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%ar) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative"
+
