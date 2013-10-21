@@ -469,16 +469,24 @@ exports.Value = class Value extends Base
   hasProperties: ->
     !!@properties.length
 
+  bareLiteral: (type) ->
+    not @properties.length and @base instanceof type
+
   # Some boolean checks for the benefit of other nodes.
-  isArray        : -> not @properties.length and @base instanceof Arr
+  isArray        : -> @bareLiteral(Arr)
+  isRange        : -> @bareLiteral(Range)
   isComplex      : -> @hasProperties() or @base.isComplex()
   isAssignable   : -> @hasProperties() or @base.isAssignable()
-  isSimpleNumber : -> @base instanceof Literal and SIMPLENUM.test @base.value
-  isString       : -> @base instanceof Literal and IS_STRING.test @base.value
+  isSimpleNumber : -> @bareLiteral(Literal) and SIMPLENUM.test @base.value
+  isString       : -> @bareLiteral(Literal) and IS_STRING.test @base.value
+  isRegex        : -> @bareLiteral(Literal) and IS_REGEX.test @base.value
   isAtomic       : ->
     for node in @properties.concat @base
       return no if node.soak or node instanceof Call
     yes
+
+  isNotCallable  : -> @isSimpleNumber() or @isString() or @isRegex() or
+                      @isArray() or @isRange() or @isSplice() or @isObject()
 
   isStatement : (o)    -> not @properties.length and @base.isStatement o
   assigns     : (name) -> not @properties.length and @base.assigns name
@@ -556,7 +564,8 @@ exports.Comment = class Comment extends Base
   makeReturn:      THIS
 
   compileNode: (o, level) ->
-    code = "/*#{multident @comment, @tab}#{if '\n' in @comment then "\n#{@tab}" else ''}*/"
+    comment = @comment.replace /^(\s*)#/gm, "$1 *"
+    code = "/*#{multident comment, @tab}#{if '\n' in comment then "\n#{@tab}" else ''} */"
     code = o.indent + code if (level or o.level) is LEVEL_TOP
     [@makeCode("\n"), @makeCode(code)]
 
@@ -569,6 +578,8 @@ exports.Call = class Call extends Base
     @isNew    = false
     @isSuper  = variable is 'super'
     @variable = if @isSuper then null else variable
+    if variable instanceof Value and variable.isNotCallable()
+      variable.error "literal is not a function"
 
   children: ['variable', 'args']
 
@@ -1091,7 +1102,7 @@ exports.Class = class Class extends Base
 
     call  = Closure.wrap @body
 
-    if @parent
+    if @parent and call.args
       @superClass = new Literal o.scope.freeVariable 'super', no
       @body.expressions.unshift new Extends lname, @superClass
       call.args.push @parent
@@ -1239,8 +1250,12 @@ exports.Assign = class Assign extends Base
     if not left.properties.length and left.base instanceof Literal and
            left.base.value != "this" and not o.scope.check left.base.value
       @variable.error "the variable \"#{left.base.value}\" can't be assigned with #{@context} because it has not been declared before"
-    if "?" in @context then o.isExistentialEquals = true
-    new Op(@context[...-1], left, new Assign(right, @value, '=')).compileToFragments o
+    if "?" in @context
+      o.isExistentialEquals = true
+      new If(new Existence(left), right, type: 'if').addElse(new Assign(right, @value, '=')).compileToFragments o
+    else
+      fragments = new Op(@context[...-1], left, new Assign(right, @value, '=')).compileToFragments o
+      if o.level <= LEVEL_LIST then fragments else @wrapInBraces fragments
 
   # Compile the assignment from an array splice literal, using JavaScript's
   # `Array#splice` method.
@@ -1252,7 +1267,8 @@ exports.Assign = class Assign extends Base
     else
       fromDecl = fromRef = '0'
     if to
-      if from?.isSimpleNumber() and to.isSimpleNumber()
+      if from and from instanceof Value and from?.isSimpleNumber() and
+                    to instanceof Value and to.isSimpleNumber()
         to = +to.compile(o) - +fromRef
         to += 1 unless exclusive
       else
@@ -1288,6 +1304,15 @@ exports.Code = class Code extends Base
   # arrow, generates a wrapper that saves the current value of `this` through
   # a closure.
   compileNode: (o) ->
+
+    # Handle bound functions early.
+    if @bound and not @wrapped and not @static
+      @wrapped = yes
+      wrapper = new Code [new Param new Literal '_this'], new Block [this]
+      boundfunc = new Call(wrapper, [new Literal 'this'])
+      boundfunc.updateLocationDataIfMissing @locationData
+      return boundfunc.compileNode(o)
+
     o.scope         = new Scope o.scope, @body, this
     o.scope.shared  = del(o, 'sharedScope')
     o.indent        += TAB
@@ -1327,11 +1352,8 @@ exports.Code = class Code extends Base
       node.error "multiple parameters named '#{name}'" if name in uniqs
       uniqs.push name
     @body.makeReturn() unless wasEmpty or @noReturn
-    if @bound
-      if o.scope.parent.method?.bound
-        @bound = @context = o.scope.parent.method.context
-      else if not @static
-        o.scope.parent.assign '_this', 'this'
+    if @bound and o.scope.parent.method?.bound
+      @bound = @context = o.scope.parent.method.context
     idt   = o.indent
     code  = 'function'
     code  += ' ' + @name if @ctor
@@ -1381,6 +1403,7 @@ exports.Param = class Param extends Base
       node = new Literal o.scope.freeVariable 'arg'
     node = new Value node
     node = new Splat node if @splat
+    node.updateLocationDataIfMissing @locationData
     @reference = node
 
   isComplex: ->
@@ -1644,7 +1667,7 @@ exports.Op = class Op extends Base
 
   # Keep reference to the left expression, unless this an existential assignment
   compileExistence: (o) ->
-    if !o.isExistentialEquals and @first.isComplex()
+    if @first.isComplex()
       ref = new Literal o.scope.freeVariable 'ref'
       fst = new Parens new Assign ref, @first
     else
@@ -1838,7 +1861,7 @@ exports.For = class For extends While
     @pattern = @name instanceof Value
     @index.error 'indexes do not apply to range loops' if @range and @index
     @name.error 'cannot pattern match over range loops' if @range and @pattern
-    @index.error 'cannot use own with for-in' if @own and not @object
+    @name.error 'cannot use own with for-in' if @own and not @object
     @returns = false
 
   children: ['body', 'source', 'guard', 'step']
@@ -2170,8 +2193,9 @@ METHOD_DEF = ///
   $
 ///
 
-# Is a literal value a string?
+# Is a literal value a string/regex?
 IS_STRING = /^['"]/
+IS_REGEX = /^\//
 
 # Utility Functions
 # -----------------

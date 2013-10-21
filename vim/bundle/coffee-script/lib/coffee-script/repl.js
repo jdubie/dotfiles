@@ -145,6 +145,8 @@
         console.warn("Node 0.8.0+ required for CoffeeScript REPL");
         process.exit(1);
       }
+      require('./extensions');
+      process.argv = ['coffee'].concat(process.argv.slice(2));
       opts = merge(replDefaults, opts);
       repl = nodeREPL.start(opts);
       repl.on('exit', function() {
