@@ -76,7 +76,7 @@ alias mt='make test'
 # git flow
 alias gffs='git flow feature start'
 alias gfff='git flow feature finish'
-gr() { git rebase -i HEAD~"$*"; }
+#gr() { git rebase -i HEAD~"$*"; }
 alias gi='vim .gitignore'
 alias gds='git diff --staged'
 
@@ -163,4 +163,9 @@ alias v='vim'
 # print last exit code
 function ec {
   echo "exit code: $?"
+}
+
+# git subtree add
+function subtreeAdd {
+  git subtree add $1 --prefix $2 --squash master
 }
