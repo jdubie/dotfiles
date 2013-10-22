@@ -29,31 +29,9 @@
 
 [push]
   default = current
+
 [pull]
   default = current
 
-#[alias]
-#  st = status
-#  ci = commit
-#  br = branch
-#  co = checkout
-#  df = diff
-#  lg = log -p
-#  lol = log --graph --decorate --pretty=oneline --abbrev-commit
-#  lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
-#  ls = ls-files
-#
-#[hub]
-#  protocol = https
-#
-#[core]
-#  pager = less -R
-#
-#[push]
-#  default = matching
-#
-#[branch]
-#	autosetuprebase = always
-#
-#[help]
-#	autocorrect = 1
+[core]
+  pager = less -R
