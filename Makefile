@@ -23,3 +23,4 @@ update-zsh:
 update-vim:
 	git subtree pull --prefix vim/bundle/coffee-script https://github.com/kchmck/vim-coffee-script.git master --squash
 	git subtree pull --prefix vim/bundle/fugitive https://github.com/tpope/vim-fugitive.git master --squash
+	git subtree pull --prefix vim/bundle/tabular https://github.com/godlygeek/tabular.git master --squash
