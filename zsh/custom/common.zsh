@@ -170,3 +170,6 @@ function ec {
 function subtreeAdd {
   git subtree add $1 --prefix $2 --squash master
 }
+
+# Add Packer to path
+PATH=$PATH:/Users/jdubie/Library/packer
