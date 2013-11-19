@@ -10,7 +10,7 @@ fi
 PATH=$PATH:~ZSH_CUSTOM/scripts
 
 # always keep node_modules/.bin in your path
-PATH=$PATH:./node_modules/.bin
+PATH=./node_modules/.bin:$PATH
 PATH=$PATH:../node_modules/.bin
 
 # put executables in your working directory in your path
@@ -141,7 +141,7 @@ function p {
 alias mb='cd ~/Developer/mailbox'
 
 # git aliases
-alias push='git push'
+alias push='git push -u'
 alias pull='git pull'
 
 # simple python server
