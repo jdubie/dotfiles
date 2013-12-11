@@ -72,6 +72,7 @@ alias sf='tmux new-session -s ${PWD##*/}'
 
 # make test
 alias mt='make test'
+alias mu='make unit'
 
 # git flow
 alias gffs='git flow feature start'
@@ -170,3 +171,6 @@ function ec {
 function subtreeAdd {
   git subtree add $1 --prefix $2 --squash master
 }
+
+# kabbes for changed files
+alias=kdiff="git diff --name-only | xargs kabbes"
