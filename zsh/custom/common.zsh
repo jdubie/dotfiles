@@ -153,7 +153,8 @@ function smpl {
 alias vm='cd ~/Developer/mailbox/colosseum && vagrant ssh'
 
 # cd into raven from parchment
-alias rv='cd Parchment/Resources/Library/raven'
+alias rv='mb && cd parchment && cd Parchment/Resources/Library/raven'
+alias rve='rv && vim Raven/Classes/Server/ORServerConstants.h'
 
 # open all files in vim
 alias vv='vim -o *'
