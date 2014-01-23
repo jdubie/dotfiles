@@ -100,3 +100,6 @@ function! WordFrequency() range
   sort i
 endfunction
 command! -range=% WordFrequency <line1>,<line2>call WordFrequency()
+
+" display airline with only one split
+set laststatus=2

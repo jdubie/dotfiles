@@ -10,7 +10,7 @@ fi
 PATH=$PATH:~ZSH_CUSTOM/scripts
 
 # always keep node_modules/.bin in your path
-PATH=$PATH:./node_modules/.bin
+PATH=./node_modules/.bin:$PATH
 PATH=$PATH:../node_modules/.bin
 
 # put executables in your working directory in your path
@@ -72,6 +72,7 @@ alias sf='tmux new-session -s ${PWD##*/}'
 
 # make test
 alias mt='make test'
+alias mu='make unit'
 
 # git flow
 alias gffs='git flow feature start'
@@ -141,7 +142,7 @@ function p {
 alias mb='cd ~/Developer/mailbox'
 
 # git aliases
-alias push='git push'
+alias push='git push -u'
 alias pull='git pull'
 
 # simple python server
@@ -174,3 +175,6 @@ function subtreeAdd {
 
 # Add Packer to path
 PATH=$PATH:/Users/jdubie/Library/packer
+
+# kabbes for changed files
+alias=kdiff="git diff --name-only | xargs kabbes"
