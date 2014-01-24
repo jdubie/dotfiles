@@ -173,4 +173,4 @@ function subtreeAdd {
 }
 
 # kabbes for changed files
-alias=kdiff="git diff --name-only | xargs kabbes"
+alias kdiff="git diff --name-only | xargs -n1 -P4 kabbes"
