@@ -29,7 +29,13 @@ alias c='clear'
 
 # runs tests
 alias k='make test'
+
+# make aliases
+alias m='make'
 alias mc='make check'
+alias mt='make test'
+alias mu='make unit'
+alias mr='make run'
 
 # edit enviroment variables
 alias zz='vim ~/.zshenv && source ~/.zshenv'
@@ -45,9 +51,6 @@ alias ss='sudo service'
 
 # make executable
 alias x='chmod +x'
-
-# alias make
-alias m='make'
 
 # size of file
 alias sz='du -sh'
@@ -70,9 +73,6 @@ alias sa='tmux attach -t'
 # tmux create session
 alias sf='tmux new-session -s ${PWD##*/}'
 
-# make test
-alias mt='make test'
-alias mu='make unit'
 
 # git flow
 alias gffs='git flow feature start'
@@ -177,4 +177,4 @@ function subtreeAdd {
 PATH=$PATH:/Users/jdubie/Library/packer
 
 # kabbes for changed files
-alias=kdiff="git diff --name-only | xargs kabbes"
+alias kdiff="git diff --name-only | xargs -n1 -P4 kabbes"
