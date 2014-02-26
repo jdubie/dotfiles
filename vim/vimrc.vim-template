@@ -12,13 +12,14 @@ call vundle#rc()
 " required!
 Bundle 'gmarik/vundle'
 
-Bundle 'derekwyatt/vim-scala'
-
 " My bundles here:
 "
 " original repos on GitHub
 Bundle 'tpope/vim-fugitive'
 Bundle 'kchmck/vim-coffee-script'
+Bundle 'bling/vim-airline'
+Bundle 'edkolev/tmuxline.vim'
+Bundle 'derekwyatt/vim-scala'
 
 syntax enable
 

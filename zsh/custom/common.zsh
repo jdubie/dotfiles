@@ -36,6 +36,7 @@ alias mc='make check'
 alias mt='make test'
 alias mu='make unit'
 alias mr='make run'
+alias me='make edit'
 
 # edit enviroment variables
 alias zz='vim ~/.zshenv && source ~/.zshenv'
