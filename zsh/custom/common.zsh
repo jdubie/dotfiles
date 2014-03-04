@@ -157,6 +157,7 @@ alias vm='cd ~/Developer/mailbox/colosseum && vagrant ssh'
 # cd into raven from parchment
 alias rv='mb && cd parchment && cd Parchment/Resources/Library/raven'
 alias rve='rv && vim Raven/Classes/Server/ORServerConstants.h'
+alias lm='cd Parchment/Resources/Library/libmailbox'
 
 # open all files in vim
 alias vv='vim -o *'
