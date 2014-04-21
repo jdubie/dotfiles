@@ -4,9 +4,10 @@ filetype off                  " required!
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
-"call pathogen#infect()
-"filetype plugin indent on
-
+syntax enable
+let g:solarized_termcolors=256
+set background=light
+colorscheme solarized
 
 " let Vundle manage Vundle
 " required!
@@ -18,10 +19,10 @@ Bundle 'gmarik/vundle'
 Bundle 'tpope/vim-fugitive'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'bling/vim-airline'
-Bundle 'edkolev/tmuxline.vim'
+" Bundle 'edkolev/tmuxline.vim'
 Bundle 'derekwyatt/vim-scala'
+Bundle 'wookiehangover/jshint.vim'
 
-syntax enable
 
 " Tab settings
 set shiftwidth=2
@@ -105,22 +106,6 @@ nmap <silent> <leader>l :wincmd l<CR>
 
 " update current working directory
 autocmd BufEnter * silent! lcd %:p:h
-
-" Word frequency
-function! WordFrequency() range
-  let all = split(join(getline(a:firstline, a:lastline)), '\A\+')
-  let frequencies = {}
-  for word in all
-    let frequencies[word] = get(frequencies, word, 0) + 1
-  endfor
-  new
-  setlocal buftype=nofile bufhidden=hide noswapfile tabstop=20
-  for [key,value] in items(frequencies)
-    call append('$', key."\t".value)
-  endfor
-  sort i
-endfunction
-command! -range=% WordFrequency <line1>,<line2>call WordFrequency()
 
 " display airline with only one split
 set laststatus=2
