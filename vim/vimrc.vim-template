@@ -5,8 +5,7 @@ set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
 syntax enable
-let g:solarized_termcolors=256
-set background=light
+set background=dark
 colorscheme solarized
 
 " let Vundle manage Vundle

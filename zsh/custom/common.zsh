@@ -183,4 +183,4 @@ PATH=$PATH:/Users/jdubie/Library/packer
 alias kdiff="git diff --name-only | xargs -n1 -P4 kabbes"
 
 # add nvm to path
-source ~/.nvm/nvm.sh
+[[ -a ~/.nvm/nvm.sh ]] && source ~/.nvm/nvm.sh
