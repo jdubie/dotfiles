@@ -72,14 +72,8 @@ nmap ; :
 " don't automatically add comments - annoying for pasting into vim
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
-" add highlighted current line
 " simple underline
-" set cursorline
-" solid red highlight
-"hi CursorLine   cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
-"hi CursorColumn cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
-"nnoremap <Leader>c :set cursorline! cursorcolumn!<CR>
-
+set cursorline
 
 " use comma as <leader> key
 let mapleader=","                                                                                                   
