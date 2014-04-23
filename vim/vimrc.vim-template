@@ -19,10 +19,8 @@ Bundle "wookiehangover/jshint.vim"
 Bundle 'tpope/vim-fugitive'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'bling/vim-airline'
-" Bundle 'edkolev/tmuxline.vim'
 Bundle 'derekwyatt/vim-scala'
 Bundle 'wookiehangover/jshint.vim'
-
 
 " Tab settings
 set shiftwidth=2
@@ -31,8 +29,6 @@ set tabstop=2
 set number
 set smartindent
 set expandtab
-
-set nocompatible
 
 set nobackup      " prevents file.txt.swp
 set nowritebackup " prevents file.txt~ on write
@@ -56,12 +52,6 @@ map <F3> :vs %:p:s,.h$,.X123X,:s,.c$,.h,:s,.X123X$,.c,<CR>
 " easier than hitting <Esc>
 imap fj <Esc><Right>
 vmap fj <Esc><Right>
-
-" nice paren functionality
-"imap ( ()<Left> " actually, this is annoying
-"imap [ []<Left> " actually, this is annoying
-
-"spell check
 
 " disable folding
 set foldlevelstart=99
@@ -92,7 +82,6 @@ nnoremap <leader>L <C-w>l<C-w>40>^
 
 " Vertical split normalize
 nnoremap <leader>m :resize -10<CR>
-
 
 " window navigation
 nmap <silent> <leader>h :wincmd h<CR>
