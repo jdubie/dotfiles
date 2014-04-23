@@ -11,6 +11,7 @@ PATH=$PATH:~ZSH_CUSTOM/scripts
 
 # always keep node_modules/.bin in your path
 PATH=./node_modules/.bin:$PATH
+PATH=/usr/local/go/bin:$PATH
 PATH=$PATH:../node_modules/.bin
 
 # put executables in your working directory in your path
