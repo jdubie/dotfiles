@@ -15,6 +15,9 @@ install-tmux:
 install-git:
 	ln -fs $(DOT_HOME)/git/gitconfig ~/.gitconfig
 
+install-lint:
+	ln -fs $(DOT_HOME)/misc/jshintrc.json ~/.jshintrc
+
 update: update-vim update-zsh
 
 update-zsh:
@@ -25,3 +28,4 @@ update-vim:
 	git subtree pull --prefix vim/bundle/fugitive https://github.com/tpope/vim-fugitive.git master --squash
 	git subtree pull --prefix vim/bundle/tabular https://github.com/godlygeek/tabular.git master --squash
 	git subtree pull --prefix vim/bundle/nerdtree https://github.com/scrooloose/nerdtree.git master --squash
+

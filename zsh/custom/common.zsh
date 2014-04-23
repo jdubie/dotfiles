@@ -158,6 +158,7 @@ alias vm='cd ~/Developer/mailbox/colosseum && vagrant ssh'
 # cd into raven from parchment
 alias rv='mb && cd parchment && cd Parchment/Resources/Library/raven'
 alias rve='rv && vim Raven/Classes/Server/ORServerConstants.h'
+alias lm='cd Parchment/Resources/Library/libmailbox'
 
 # open all files in vim
 alias vv='vim -o *'
@@ -180,3 +181,6 @@ PATH=$PATH:/Users/jdubie/Library/packer
 
 # kabbes for changed files
 alias kdiff="git diff --name-only | xargs -n1 -P4 kabbes"
+
+# add nvm to path
+source ~/.nvm/nvm.sh
