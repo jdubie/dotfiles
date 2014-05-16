@@ -1,26 +1,29 @@
 set nocompatible              " be iMproved
 filetype off                  " required!
 
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+" let Vundle manage Vundle
+" required!
+Plugin 'gmarik/vundle'
+
+" My bundles here:
+"
+" original repos on GitHub
+Plugin 'wookiehangover/jshint.vim'
+Plugin 'tpope/vim-fugitive'
+Plugin 'kchmck/vim-coffee-script'
+Plugin 'bling/vim-airline'
+Plugin 'derekwyatt/vim-scala'
+
+call vundle#end()
+filetype plugin indent on
 
 syntax enable
 set background=dark
 colorscheme solarized
 
-" let Vundle manage Vundle
-" required!
-Bundle 'gmarik/vundle'
-
-" My bundles here:
-"
-" original repos on GitHub
-Bundle "wookiehangover/jshint.vim"
-Bundle 'tpope/vim-fugitive'
-Bundle 'kchmck/vim-coffee-script'
-Bundle 'bling/vim-airline'
-Bundle 'derekwyatt/vim-scala'
-Bundle 'wookiehangover/jshint.vim'
 
 " Tab settings
 set shiftwidth=2
