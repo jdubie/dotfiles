@@ -15,12 +15,12 @@ Bundle 'gmarik/vundle'
 " My bundles here:
 "
 " original repos on GitHub
-Bundle "wookiehangover/jshint.vim"
-Bundle 'tpope/vim-fugitive'
-Bundle 'kchmck/vim-coffee-script'
-Bundle 'bling/vim-airline'
-Bundle 'derekwyatt/vim-scala'
 Bundle 'wookiehangover/jshint.vim'
+Bundle 'tpope/vim-fugitive'
+Bundle 'bling/vim-airline'
+Bundle 'wookiehangover/jshint.vim'
+Bundle 'derekwyatt/vim-scala'
+Bundle 'kchmck/vim-coffee-script'
 
 " Tab settings
 set shiftwidth=2
