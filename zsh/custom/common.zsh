@@ -108,6 +108,12 @@ function ackp {
   ack $@ --pager='less -R'
 }
 
+# paging silver searcher agp
+function agp {
+  ag $@ --pager='less -R'
+}
+alias ag='/usr/local/bin/ag'
+
 # put ~/bin in path
 PATH=$PATH:~/bin
 PATH=$PATH:~/.bin
