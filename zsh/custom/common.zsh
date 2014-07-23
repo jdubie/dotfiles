@@ -151,7 +151,7 @@ alias mb='cd ~/Developer/mailbox'
 
 # git aliases
 alias push='git push -u'
-alias pull='git pull'
+alias pull='git pull --rebase'
 
 # simple python server
 function smpl {
