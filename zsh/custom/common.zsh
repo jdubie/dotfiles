@@ -184,3 +184,7 @@ alias kdiff="git diff --name-only | xargs -n1 -P4 kabbes"
 
 # add nvm to path
 [[ -a ~/.nvm/nvm.sh ]] && source ~/.nvm/nvm.sh
+
+# docker
+alias docker="sudo docker"
+alias d="sudo docker"
