@@ -88,7 +88,7 @@ autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 set cursorline
 
 " use comma as <leader> key
-let mapleader=","                                                                                                   
+let mapleader=","
 nmap , <Space>
 set winminwidth=0
 
