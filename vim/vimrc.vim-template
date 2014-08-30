@@ -16,6 +16,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'bling/vim-airline'
 Plugin 'derekwyatt/vim-scala'
+Bundle 'ekalinin/Dockerfile.vim'
 
 call vundle#end()
 filetype plugin indent on

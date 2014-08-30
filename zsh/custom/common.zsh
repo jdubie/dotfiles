@@ -219,5 +219,5 @@ alias cap='rvm use 1.9.3 && bundle exec cap'
 [[ -a ~/.nvm/nvm.sh ]] && source ~/.nvm/nvm.sh
 
 # docker
-alias docker="sudo docker"
-alias d="sudo docker"
+alias docker="sudo docker.io"
+alias d="sudo docker.io"
