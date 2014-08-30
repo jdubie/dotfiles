@@ -7,23 +7,27 @@ if [[ -a ~/.bash_aliases ]]; then
   source ~/.bash_aliases
 fi
 
+if [[ -a ~/.aws ]]; then
+  source ~/.aws
+fi
+
 PATH=$PATH:~ZSH_CUSTOM/scripts
 
 # always keep node_modules/.bin in your path
 PATH=./node_modules/.bin:$PATH
 PATH=/usr/local/go/bin:$PATH
 PATH=$PATH:../node_modules/.bin
+PATH=$PATH:../../node_modules/.bin
+PATH=$PATH:../../../node_modules/.bin
+PATH=$PATH:../../../../node_modules/.bin
+PATH=$PATH:../../../../../node_modules/.bin
 
 # put executables in your working directory in your path
 #PATH:$PATH:. # TODO get this working
 
-# quickly open nodejs or kanso project files
-alias kk='$EDITOR kanso.json'
+# quickly open project files
 alias pp='$EDITOR package.json'
 alias mm='$EDITOR Makefile'
-
-alias seed='kanso wipe && kanso seed && sleep 1 && clear'
-alias wipe='kanso wipe && kanso push && sleep 1 && clear'
 
 # clears terminal
 alias c='clear'
@@ -75,6 +79,7 @@ alias sa='tmux attach -t'
 # tmux create session
 alias sf='tmux new-session -s ${PWD##*/}'
 
+alias g='/usr/local/bin/go'
 
 # git flow
 alias gffs='git flow feature start'
@@ -83,6 +88,10 @@ alias gfff='git flow feature finish'
 alias gi='vim .gitignore'
 alias gds='git diff --staged'
 alias gd='git diff'
+alias ga='git add --all'
+alias gad='git add -p'
+
+export GOPATH=/Users/jdubie/.go
 
 # checksum directory
 chk() { find $1 -exec md5sum {} + | awk '{print $1}' | sort | md5sum }
@@ -118,8 +127,20 @@ alias ag='/usr/local/bin/ag'
 PATH=$PATH:~/bin
 PATH=$PATH:~/.bin
 
-# reset rabbit
-alias resetrabbit='/usr/local/sbin/rabbitmqctl stop_app; /usr/local/sbin/rabbitmqctl reset; /usr/local/sbin/rabbitmqctl start_app;'
+wipe_db () {
+  echo 'show dbs' | mongo | grep '\(montecore_\|local_maestro\|cheddar_\)' | awk '{print $1;}' | xargs -n1 -I dbname mongo dbname --eval "db.dropDatabase()"
+}
+
+wipe_rabbit () {
+  /usr/local/sbin/rabbitmqctl stop_app;
+  /usr/local/sbin/rabbitmqctl reset;
+  /usr/local/sbin/rabbitmqctl start_app;
+}
+
+wipe () {
+  wipe_db
+  wipe_rabbit
+}
 
 # wipe mongo
 db_reset() {
@@ -187,6 +208,12 @@ PATH=$PATH:/Users/jdubie/Library/packer
 
 # kabbes for changed files
 alias kdiff="git diff --name-only | xargs -n1 -P4 kabbes"
+
+function port {
+  lsof -i :$1
+}
+
+alias cap='rvm use 1.9.3 && bundle exec cap'
 
 # add nvm to path
 [[ -a ~/.nvm/nvm.sh ]] && source ~/.nvm/nvm.sh
