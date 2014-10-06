@@ -1,6 +1,6 @@
 DOT_HOME=~/.dotfiles
 
-install: install-zsh install-vim install-tmux install-git
+install: install-zsh install-vim install-tmux install-git install-lint
 
 install-zsh:
 	ln -fs $(DOT_HOME)/zsh/templates/zshrc.zsh-template ~/.zshrc
@@ -28,4 +28,3 @@ update-vim:
 	git subtree pull --prefix vim/bundle/fugitive https://github.com/tpope/vim-fugitive.git master --squash
 	git subtree pull --prefix vim/bundle/tabular https://github.com/godlygeek/tabular.git master --squash
 	git subtree pull --prefix vim/bundle/nerdtree https://github.com/scrooloose/nerdtree.git master --squash
-
