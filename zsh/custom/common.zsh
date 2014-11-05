@@ -102,6 +102,16 @@ bk() { cp "$1" "$1.bak"; }
 # show all my processes
 alias mp="ps aux | grep $USER"
 
+# grep all running processes
+function p {
+  ps aux | grep -i $1
+}
+
+# kill all process that match
+function kk {
+  ps aux | grep -i $1 | awk '{print $2}' | xargs -n1 kill
+}
+
 # filter long lines
 fl() {
   local LENGTH=$1
@@ -162,11 +172,6 @@ man() {
       man "$@"
 }
 
-# grep all running processes
-function p {
-  ps aux | grep $1
-}
-
 # cd to Mailbox folder
 alias mb='cd ~/Developer/mailbox'
 
@@ -221,3 +226,10 @@ alias cap='rvm use 1.9.3 && bundle exec cap'
 # docker
 alias docker="sudo docker.io"
 alias d="sudo docker.io"
+
+# go setup
+mkdir -p $HOME/go
+export GOPATH=$HOME/go
+mkdir -p $GOPATH/bin
+mkdir -p $GOPATH/pkg
+mkdir -p $GOPATH/src
