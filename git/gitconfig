@@ -18,3 +18,5 @@
 
 [core]
   pager = less -R
+[merge]
+	conflictstyle = diff3
