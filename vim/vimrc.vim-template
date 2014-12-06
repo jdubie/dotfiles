@@ -19,6 +19,8 @@ Plugin 'derekwyatt/vim-scala'
 Plugin 'ekalinin/Dockerfile.vim'
 Plugin 'rking/ag.vim'
 Plugin 'fatih/vim-go'
+Plugin 'scrooloose/syntastic'
+Plugin 'kien/ctrlp.vim'
 
 call vundle#end()
 filetype plugin indent on

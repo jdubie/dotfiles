@@ -233,3 +233,7 @@ export GOPATH=$HOME/go
 mkdir -p $GOPATH/bin
 mkdir -p $GOPATH/pkg
 mkdir -p $GOPATH/src
+
+alias mist="cd ~/go/src/mist"
+
+unsetopt correct_all
