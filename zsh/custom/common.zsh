@@ -86,8 +86,7 @@ alias gffs='git flow feature start'
 alias gfff='git flow feature finish'
 #gr() { git rebase -i HEAD~"$*"; }
 alias gi='vim .gitignore'
-alias gds='git diff --staged --word-diff=color'
-alias gd='git diff --word-diff=color'
+alias gds='git diff --staged'
 alias ga='git add --all'
 alias gad='git add -p'
 
