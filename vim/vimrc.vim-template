@@ -29,11 +29,11 @@ call vundle#end()
 filetype plugin indent on
 
 syntax enable
-"colorscheme tomorrow-night-blue
-"colorscheme tomorrow-night-bright
-colorscheme tomorrow-night-eighties
-"colorscheme tomorrow-night
-"colorscheme tomorrow
+"colorscheme Tomorrow-Night-Blue
+"colorscheme Tomorrow-Night-Bright
+colorscheme Tomorrow-Night-Eighties
+"colorscheme Tomorrow-Night
+"colorscheme Tomorrow
 "set background=dark
 "colorscheme solarized
 
