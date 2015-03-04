@@ -23,12 +23,18 @@ Plugin 'scrooloose/syntastic'
 Plugin 'kien/ctrlp.vim'
 Plugin 'mxw/vim-jsx'
 Plugin 'wizicer/vim-jison'
+Plugin 'chriskempson/vim-tomorrow-theme'
 
 call vundle#end()
 filetype plugin indent on
 
 syntax enable
-set background=dark
+"colorscheme tomorrow-night-blue
+"colorscheme tomorrow-night-bright
+colorscheme tomorrow-night-eighties
+"colorscheme tomorrow-night
+"colorscheme tomorrow
+"set background=dark
 "colorscheme solarized
 
 " *******************************************************************************

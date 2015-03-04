@@ -90,6 +90,18 @@ alias gds='git diff --staged'
 alias ga='git add --all'
 alias gad='git add -p'
 
+# git aliases
+alias push='git push -u'
+alias pull='git pull --rebase'
+
+# git subtree add
+function subtreeAdd {
+  git subtree add $1 --prefix $2 --squash master
+}
+
+# rebase current branch off of master
+alias gr='git fetch && git rebase origin/master'
+
 export GOPATH=/Users/jdubie/.go
 
 # checksum directory
@@ -174,10 +186,6 @@ man() {
 # cd to Mailbox folder
 alias mb='cd ~/Developer/mailbox'
 
-# git aliases
-alias push='git push -u'
-alias pull='git pull --rebase'
-
 # simple python server
 function smpl {
   python -m SimpleHTTPServer $1
@@ -202,10 +210,6 @@ function ec {
   echo "exit code: $?"
 }
 
-# git subtree add
-function subtreeAdd {
-  git subtree add $1 --prefix $2 --squash master
-}
 
 # Add Packer to path
 PATH=$PATH:/Users/jdubie/Library/packer
@@ -236,3 +240,10 @@ mkdir -p $GOPATH/src
 alias mist="cd ~/go/src/mist"
 
 unsetopt correct_all
+
+alias touchall='find ~/src/server/metaserver/metaserver/static -name "*.coffee" -exec touch {} \;'
+alias touchit='find ~/src/server -exec touch {} \;'
+
+alias db="cd ~/src/server"
+
+alias jibber="mb && cd jibber && DEBUG=* npm start"
