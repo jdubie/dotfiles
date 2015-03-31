@@ -99,6 +99,8 @@ function subtreeAdd {
   git subtree add $1 --prefix $2 --squash master
 }
 
+alias del='git branch -d'
+
 # rebase current branch off of master
 alias gr='git fetch && git rebase origin/master'
 
@@ -247,3 +249,5 @@ alias touchit='find ~/src/server -exec touch {} \;'
 alias db="cd ~/src/server"
 
 alias jibber="mb && cd jibber && DEBUG=* npm start"
+
+alias noma='cd ~/src/server/metaserver/metaserver/static/coffee/modules/dirty/streams'
