@@ -13,9 +13,13 @@ fi
 
 PATH=$PATH:~ZSH_CUSTOM/scripts
 
+# homebrew before systyem installed stuff
+PATH=/usr/local/bin:$PATH
+
+PATH=/usr/local/go/bin:$PATH
+
 # always keep node_modules/.bin in your path
 PATH=./node_modules/.bin:$PATH
-PATH=/usr/local/go/bin:$PATH
 PATH=$PATH:../node_modules/.bin
 PATH=$PATH:../../node_modules/.bin
 PATH=$PATH:../../../node_modules/.bin
