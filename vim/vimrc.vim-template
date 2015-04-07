@@ -121,8 +121,12 @@ nnoremap <leader>m :resize -10<CR>
 nmap <silent> <leader>h :wincmd h<CR>
 nmap <silent> <leader>l :wincmd l<CR>
 
-" update current working directory
-autocmd BufEnter * silent! lcd %:p:h
+" set vim to chdir for each file
+if exists('+autochdir')
+  set autochdir
+else
+  autocmd BufEnter * silent! lcd %:p:h:gs/ /\\ /
+endif
 
 " display airline with only one split
 set laststatus=2

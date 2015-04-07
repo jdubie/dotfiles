@@ -105,6 +105,8 @@ function subtreeAdd {
 
 alias del='git branch -d'
 
+alias gdh='git diff "HEAD^"'
+
 # rebase current branch off of master
 alias gr='git fetch && git rebase origin/master'
 
