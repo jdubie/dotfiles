@@ -11,6 +11,8 @@ if [[ -a ~/.aws ]]; then
   source ~/.aws
 fi
 
+PATH=$PATH:~/.dotfiles/bin
+
 PATH=$PATH:~ZSH_CUSTOM/scripts
 
 # homebrew before systyem installed stuff

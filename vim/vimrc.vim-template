@@ -12,16 +12,10 @@ Plugin 'gmarik/vundle'
 "
 " original repos on GitHub
 Plugin 'tpope/vim-fugitive'
-Plugin 'kchmck/vim-coffee-script'
+Plugin 'vim-scripts/paredit.vim'
 Plugin 'bling/vim-airline'
-Plugin 'derekwyatt/vim-scala'
-Plugin 'ekalinin/Dockerfile.vim'
 Plugin 'rking/ag.vim'
-Plugin 'fatih/vim-go'
-Plugin 'scrooloose/syntastic'
 Plugin 'kien/ctrlp.vim'
-Plugin 'mxw/vim-jsx'
-Plugin 'wizicer/vim-jison'
 Plugin 'chriskempson/vim-tomorrow-theme'
 
 call vundle#end()
@@ -133,4 +127,4 @@ set laststatus=2
 
 " ctrlp
 let g:ctrlp_max_depth=4
-let g:ctrlp_root_markers = ['streams_app.coffee']
+let g:ctrlp_user_command='find %s -type f -not -path "*/\.*" | grep -v "`cat .ctrlpignore`"'
