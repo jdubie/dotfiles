@@ -260,3 +260,5 @@ alias jibber="mb && cd jibber && DEBUG=* npm start"
 
 alias noma='cd ~/src/server/metaserver/metaserver/static/coffee/modules/dirty/streams'
 alias jas='cd ~/src/server/metaserver/metaserver/static/coffee/tests/jasmine_tests/streams'
+
+alias lad='cd ~/Developer/ladder'
