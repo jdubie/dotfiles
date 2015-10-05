@@ -11,6 +11,8 @@ Plugin 'gmarik/vundle'
 " My bundles here:
 "
 " original repos on GitHub
+Plugin 'tpope/vim-fireplace'
+Plugin 'venantius/vim-cljfmt'
 Plugin 'tpope/vim-fugitive'
 Plugin 'vim-scripts/paredit.vim'
 Plugin 'bling/vim-airline'
@@ -21,6 +23,9 @@ Plugin 'lambdatoast/elm.vim'
 
 call vundle#end()
 filetype plugin indent on
+
+" cljc filetype
+au BufNewFile,BufRead *.cljc set filetype=clojure
 
 syntax enable
 "colorscheme Tomorrow-Night-Blue
@@ -51,6 +56,16 @@ endfunction
 command! -range=% FixWhitespace call <SID>FixWhitespace(<line1>,<line2>)
 " *******************************************************************************
 
+
+" Shortcut to reload clojure files
+au Filetype clojure nmap <c-c><c-k> :Require<cr>
+" Shortcut to run clojure tests
+au Filetype clojure nmap t :RunTests<cr>
+" <c-c><c-w>
+" nnoremap <leader>ma <C-w>400><C-w>400+^
+" nnoremap
+
+
 " Tab settings
 set shiftwidth=2
 set tabstop=2
@@ -75,8 +90,8 @@ set autoread    " automatically reloads (i.e. on git pull)
 set number      " line numbers
 
 " switch bewtween .c and .h
-map t :e %:p:s,.h$,.X123X,:s,.c$,.h,:s,.X123X$,.c,<CR>
-map <F3> :vs %:p:s,.h$,.X123X,:s,.c$,.h,:s,.X123X$,.c,<CR>
+" map t :e %:p:s,.h$,.X123X,:s,.c$,.h,:s,.X123X$,.c,<CR>
+" map <F3> :vs %:p:s,.h$,.X123X,:s,.c$,.h,:s,.X123X$,.c,<CR>
 
 " easier than hitting <Esc>
 imap fj <Esc><Right>
@@ -128,4 +143,4 @@ set laststatus=2
 
 " ctrlp
 let g:ctrlp_max_depth=4
-let g:ctrlp_user_command='find %s -type f -not -path "*/\.*" | grep -v "`cat .ctrlpignore`"'
+let g:ctrlp_user_command='find %s -type f -not -path "*/\.*" -not -path "*.log" | grep -v "`cat .ctrlpignore`"'

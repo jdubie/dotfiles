@@ -262,3 +262,7 @@ alias noma='cd ~/src/server/metaserver/metaserver/static/coffee/modules/dirty/st
 alias jas='cd ~/src/server/metaserver/metaserver/static/coffee/tests/jasmine_tests/streams'
 
 alias lad='cd ~/Developer/ladder'
+
+function sw {
+  tmux swap-window -s $1 -t $2
+}
