@@ -109,6 +109,10 @@ alias del='git branch -d'
 
 alias gdh='git diff "HEAD^"'
 
+function gdc {
+  git diff "$1^" $1
+}
+
 # rebase current branch off of master
 alias gr='git fetch && git rebase origin/master'
 
