@@ -240,10 +240,6 @@ alias cap='rvm use 1.9.3 && bundle exec cap'
 # add nvm to path
 [[ -a ~/.nvm/nvm.sh ]] && source ~/.nvm/nvm.sh
 
-# docker
-alias docker="sudo docker.io"
-alias d="sudo docker.io"
-
 # go setup
 mkdir -p $HOME/go
 export GOPATH=$HOME/go
