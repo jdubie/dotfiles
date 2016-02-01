@@ -8,7 +8,10 @@ PATH=$PATH:~ZSH_CUSTOM/scripts
 
 # quickly open project files
 alias pp='$EDITOR package.json'
+
+# Makefile
 alias mm='$EDITOR Makefile'
+alias m='make'
 
 # edit enviroment variables
 alias zz='vim ~/.zshenv && source ~/.zshenv'
