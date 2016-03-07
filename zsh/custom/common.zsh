@@ -12,6 +12,7 @@ alias pp='$EDITOR package.json'
 # Makefile
 alias mm='$EDITOR Makefile'
 alias m='make'
+alias c='clear'
 
 # edit enviroment variables
 alias zz='vim ~/.zshenv && source ~/.zshenv'
@@ -24,6 +25,7 @@ alias x='chmod +x'
 
 # edit this file
 alias zc='vim ~ZSH_CUSTOM/common.zsh'
+alias v='vim'
 
 # extract tar ball
 alias utar='tar xvzf'
@@ -47,6 +49,7 @@ alias gad='git add -p'
 alias push='git push -u'
 alias pull='git pull --rebase'
 alias del='git branch -d'
+alias delm='git branch --merged | xargs -n 1 git branch -d'
 alias gdh='git diff "HEAD^"'
 function gdc {
   git diff "$1^" $1
@@ -101,3 +104,8 @@ function sw {
 function docker-start {
   bash --login '/Applications/Docker/Docker Quickstart Terminal.app/Contents/Resources/Scripts/start.sh'
 }
+alias dm="docker-machine"
+
+alias todo="vim ~/Dropbox/org/todo.org"
+
+alias wipe_dns='sudo killall -HUP mDNSResponder'

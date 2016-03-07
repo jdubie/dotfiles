@@ -27,6 +27,7 @@ Plugin 'guns/vim-clojure-highlight'
 Plugin 'vim-scripts/paredit.vim'
 Plugin 'chriskempson/vim-tomorrow-theme'
 Plugin 'bling/vim-airline'
+Plugin 'jceb/vim-orgmode'
 
 call vundle#end()
 filetype plugin indent on
