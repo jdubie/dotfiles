@@ -49,7 +49,8 @@ alias gad='git add -p'
 alias push='git push -u'
 alias pull='git pull --rebase'
 alias del='git branch -d'
-alias delm='git branch --merged | xargs -n 1 git branch -d'
+alias delm='git branch --merged | grep -v "\* " | xargs -n 1 git branch -d'
+alias delr='git branch -r --merged | grep -v origin/HEAD | grep -v origin/master | sed s#origin/## | xargs -n 1 git push origin --delete'
 alias gdh='git diff "HEAD^"'
 function gdc {
   git diff "$1^" $1

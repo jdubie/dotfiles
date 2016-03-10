@@ -13,7 +13,7 @@ Plugin 'gmarik/vundle'
 " original repos on GitHub
 "Plugin 'typedclojure/vim-typedclojure'
 "Plugin 'tpope/vim-fireplace'
-"Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-fugitive'
 "Plugin 'scrooloose/syntastic'
 "Plugin 'venantius/vim-cljfmt'
 "Plugin 'rking/ag.vim'
