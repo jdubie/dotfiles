@@ -18,7 +18,7 @@ COMPLETION_WAITING_DOTS="true"
 # much faster.
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 
-plugins=(git lol npm node osx nvm)
+plugins=(git lol npm node osx nvm vi-mode)
 
 source $ZSH/oh-my-zsh.sh
 
