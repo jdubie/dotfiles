@@ -4,7 +4,7 @@ PATH=$PATH:~/.dotfiles/bin
 PATH=$PATH:~ZSH_CUSTOM/scripts
 
 # homebrew before systyem installed stuff
-#PATH=/usr/local/bin:$PATH
+PATH=/usr/local/bin:$PATH
 
 # quickly open project files
 alias pp='$EDITOR package.json'
