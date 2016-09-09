@@ -6,6 +6,8 @@ PATH=$PATH:~ZSH_CUSTOM/scripts
 # homebrew before systyem installed stuff
 PATH=/usr/local/bin:$PATH
 
+PATH=$PATH:../buck/bin
+
 # quickly open project files
 alias pp='$EDITOR package.json'
 
@@ -13,6 +15,9 @@ alias pp='$EDITOR package.json'
 alias mm='$EDITOR Makefile'
 alias m='make'
 alias c='clear'
+
+# kubernetes
+alias k='kubectl'
 
 # edit enviroment variables
 alias zz='vim ~/.zshenv && source ~/.zshenv'
