@@ -122,3 +122,20 @@ alias dm="docker-machine"
 alias todo="vim ~/Dropbox/org/todo.org"
 
 alias wipe_dns='sudo killall -HUP mDNSResponder'
+
+function commits_for_all_authors {
+  git log --since='last month' --pretty="%an" | sort | uniq -c | sort -r
+}
+
+function lines_changed_for_all_authors_private {
+  IFS=$'\n' # make newlines the only separator
+  for author in `git log --since='last month' --pretty="%an" | sort | uniq`
+  do
+    git log --shortstat --author="$author" | grep -E "fil(e|es) changed" | awk '{files+=$1; inserted+=$4; deleted+=$6} END {printf "% 8d", inserted + deleted }'
+    echo " $author"
+  done
+}
+
+function lines_changed_for_all_authors {
+  lines_changed_for_all_authors_private | sort -r
+}
