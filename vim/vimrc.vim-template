@@ -15,8 +15,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'chriskempson/vim-tomorrow-theme'
 Plugin 'bling/vim-airline'
 Plugin 'jceb/vim-orgmode'
-
-"Plugin 'tpope/vim-speeddating'
+Plugin 'tpope/vim-speeddating'
 
 " clojure
 Plugin 'bhurlow/vim-parinfer'

@@ -16,9 +16,6 @@ alias mm='$EDITOR Makefile'
 alias m='make'
 alias c='clear'
 
-# kubernetes
-alias k='kubectl'
-
 # edit enviroment variables
 alias zz='vim ~/.zshenv && source ~/.zshenv'
 
@@ -138,4 +135,22 @@ function lines_changed_for_all_authors_private {
 
 function lines_changed_for_all_authors {
   lines_changed_for_all_authors_private | sort -r
+}
+
+################################################################################
+## Kubernetes
+################################################################################
+
+alias k='kubectl'
+
+function kexec {
+  kubectl exec $1 -c buildkite -it -- bash -il
+}
+
+alias kk='kubectl cluster-info'
+
+function kenv {
+  cd ~/Developer/ladder/terraform/ladder
+  "./$1.sh" ./kubectl-setup.sh
+  popd
 }
