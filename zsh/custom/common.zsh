@@ -1,10 +1,18 @@
 export EDITOR=vim
 
+GOPATH=~/Developer/go
+PATH=$PATH:~GOPATH/bin
+
+PATH=$PATH:~/Library/google-cloud-sdk/bin
+
 PATH=$PATH:~/.dotfiles/bin
 PATH=$PATH:~ZSH_CUSTOM/scripts
 
 # homebrew before systyem installed stuff
 PATH=/usr/local/bin:$PATH
+
+# use GNU util before OSX stuff
+PATH=/usr/local/opt/coreutils/libexec/gnubin:$PATH
 
 PATH=$PATH:../buck/bin
 
@@ -64,6 +72,9 @@ function gsync {
   delm
   delr
 }
+
+alias gw="git for-each-ref --sort=committerdate refs/heads/ --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(color:red)%(objectname:short)%(color:reset) - %(contents:subject) - %(authorname) (%(color:green)%(committerdate:relative)%(color:reset))' | grep WIP"
+alias gbr="git for-each-ref --sort=committerdate refs/heads/ --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(color:red)%(objectname:short)%(color:reset) - %(contents:subject) - %(authorname) (%(color:green)%(committerdate:relative)%(color:reset))'"
 
 # rebase current branch off of master
 alias gr='git fetch && git rebase origin/master'
@@ -148,9 +159,16 @@ function kexec {
 }
 
 alias kk='kubectl cluster-info'
+alias kroot='kubectl --context root'
+alias kdev='kubectl --context dev'
+alias kstage='kubectl --context stage'
+alias kprod='kubectl --context prod'
 
 function kenv {
   cd ~/Developer/ladder/terraform/ladder
   "./$1.sh" ./kubectl-setup.sh
   popd
 }
+
+# most recent downloads
+alias rr='ls -lt ~/Downloads | head -n 10'
