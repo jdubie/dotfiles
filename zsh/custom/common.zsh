@@ -14,7 +14,12 @@ PATH=/usr/local/bin:$PATH
 # use GNU util before OSX stuff
 PATH=/usr/local/opt/coreutils/libexec/gnubin:$PATH
 
-PATH=$PATH:../buck/bin
+if [ -f ~/.gnupg/.gpg-agent-info ] && [ -n "$(pgrep gpg-agent)" ]; then
+    source ~/.gnupg/.gpg-agent-info
+    export GPG_AGENT_INFO
+else
+    eval $(gpg-agent --daemon --write-env-file ~/.gnupg/.gpg-agent-info)
+fi
 
 # quickly open project files
 alias pp='$EDITOR package.json'
@@ -36,6 +41,7 @@ alias x='chmod +x'
 # edit this file
 alias zc='vim ~ZSH_CUSTOM/common.zsh'
 alias v='vim'
+alias e='emacs'
 
 # extract tar ball
 alias utar='tar xvzf'

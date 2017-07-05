@@ -2,3 +2,7 @@ vim/.netrwhist
 vim/.netrwbook
 vim/bundle
 vim/vim
+
+config
+bin/terraform
+bin/buck
