@@ -178,3 +178,6 @@ function kenv {
 
 # most recent downloads
 alias rr='ls -lt ~/Downloads | head -n 10'
+
+alias ls='exa'
+alias ll='exa -bghHliS'
