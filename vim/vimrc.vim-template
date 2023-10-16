@@ -70,9 +70,9 @@ au Filetype clojure nmap t :RunTests<cr>
 
 
 " Tab settings
-set shiftwidth=2
-set tabstop=2
-set softtabstop=2
+set shiftwidth=4
+set tabstop=4
+set softtabstop=4
 set expandtab
 
 set smartindent
@@ -147,5 +147,7 @@ set laststatus=2
 " ctrlp
 let g:ctrlp_max_depth=4
 let g:ctrlp_user_command='find %s -type f -not -path "*/\.*" -not -path "*.log" | grep -v "`cat .ctrlpignore`"'
+
+" export DISPLAY=:0
 
 autocmd BufRead *.clj try | silent! Require | catch /^Fireplace/ | endtry

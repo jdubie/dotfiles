@@ -14,12 +14,12 @@ PATH=/usr/local/bin:$PATH
 # use GNU util before OSX stuff
 PATH=/usr/local/opt/coreutils/libexec/gnubin:$PATH
 
-if [ -f ~/.gnupg/.gpg-agent-info ] && [ -n "$(pgrep gpg-agent)" ]; then
-    source ~/.gnupg/.gpg-agent-info
-    export GPG_AGENT_INFO
-else
-    eval $(gpg-agent --daemon --write-env-file ~/.gnupg/.gpg-agent-info)
-fi
+# if [ -f ~/.gnupg/.gpg-agent-info ] && [ -n "$(pgrep gpg-agent)" ]; then
+#     source ~/.gnupg/.gpg-agent-info
+#     export GPG_AGENT_INFO
+# else
+#     eval $(gpg-agent --daemon --write-env-file ~/.gnupg/.gpg-agent-info)
+# fi
 
 # quickly open project files
 alias pp='$EDITOR package.json'
@@ -94,24 +94,6 @@ function agp {
 }
 alias ag='/usr/local/bin/ag'
 
-# color man pages
-man() {
-  env \
-    LESS_TERMCAP_mb=$(printf "\e[1;31m") \
-    LESS_TERMCAP_md=$(printf "\e[1;31m") \
-    LESS_TERMCAP_me=$(printf "\e[0m") \
-    LESS_TERMCAP_se=$(printf "\e[0m") \
-    LESS_TERMCAP_so=$(printf "\e[1;44;33m") \
-    LESS_TERMCAP_ue=$(printf "\e[0m") \
-    LESS_TERMCAP_us=$(printf "\e[1;32m") \
-      man "$@"
-}
-
-# simple python server
-function smpl {
-  python -m SimpleHTTPServer $1
-}
-
 # print last exit code
 function ec {
   echo "exit code: $?"
@@ -179,5 +161,5 @@ function kenv {
 # most recent downloads
 alias rr='ls -lt ~/Downloads | head -n 10'
 
-alias ls='exa'
-alias ll='exa -bghHliS'
+#alias ls='exa'
+#alias ll='exa -bghHliS'

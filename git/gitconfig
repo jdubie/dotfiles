@@ -6,9 +6,9 @@
 [user]
   name = Jack Dubie
   email = jack.dubie@gmail.com
-  signingkey = FFB113BC
-[commit]
-  gpgsign = true
+#  signingkey = FFB113BC
+#[commit]
+#  gpgsign = true
 
 [color]
   ui = auto
